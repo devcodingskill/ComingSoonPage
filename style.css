@@ -22,6 +22,7 @@
     position: relative;
     top: 20%;
     transform: translateY(-20%);
+    width: 60%;
 
 }
 .content h1{
@@ -34,9 +35,7 @@
     font-weight: 400;
     margin-bottom: 20px;
 }  
-.content span{
-    font-size: 64px;
-    font-weight: 600;
+.content span{    
     color: #ff0000;
 }
 .countdown{
@@ -56,4 +55,21 @@
     font-weight: 600;
     color: #fff;
     margin-bottom: 10px;
+}
+.subscribe-btn{
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    padding: 10px 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    cursor: pointer;
+
+}
+.subscribe-btn img{
+    width: 20px;
+    margin-right: 10px;
 }
