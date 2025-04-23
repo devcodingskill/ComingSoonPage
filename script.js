@@ -1,23 +1,33 @@
 
-const days =document.getElementById('days');
+(()=>{
+const days = document.getElementById('days');
 const hours = document.getElementById('hours');
-const minutes = document.getElementById('minutes');      
+const minutes = document.getElementById('minutes');
 const seconds = document.getElementById('seconds');
-let today = new Date();
-const targetDate = new Date('2025-05-10T12:59:59');
-console.log(targetDate);
-console.log(targetDate.getSeconds()-today.getSeconds());
-days.innerHTML = today.getDate();
-    hours.innerHTML = today.getHours();
-    minutes.innerHTML = today.getMinutes();
-    seconds.innerHTML = today.getSeconds();
-setInterval(countdown,1000);
 
-function countdown() {   
-    today = new Date();
-    days.innerHTML = targetDate.getDate()-today.getDate()<9? '0' + targetDate.getDate()-today.getDate() : targetDate.getDate()-today.getDate();
-    hours.innerHTML = targetDate.getHours()-today.getHours()<9? '0' + targetDate.getHours()-today.getHours() : targetDate.getHours()-today.getHours();  
-    minutes.innerHTML = targetDate.getMinutes()-today.getMinutes()<9? '0' + targetDate.getMinutes()-today.getMinutes() : targetDate.getMinutes()-today.getMinutes();
-    seconds.innerHTML = targetDate.getSeconds()-today.getSeconds()<9? '0' + targetDate.getSeconds()-today.getSeconds() : targetDate.getSeconds()-today.getSeconds();
+var countdownDate = new Date("May 16, 2025 00:00:00").getTime();
 
-}
+const interval = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+    const day = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hour = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const second = Math.floor((distance % (1000 * 60)) / 1000);
+
+    days.innerHTML = day < 10 ? "0" + day : day;
+    hours.innerHTML = hour < 10 ? "0" + hour : hour;
+    minutes.innerHTML = minute < 10 ? "0" + minute : minute;
+    seconds.innerHTML = second < 10 ? "0" + second : second;
+
+    // If the countdown is finished, write some text
+    if (distance < 0) {
+        clearInterval(interval);
+        days.innerHTML = "00";
+        hours.innerHTML = "00";
+        minutes.innerHTML = "00";
+        seconds.innerHTML = "00";
+    }
+
+}, 1000);
+})();
